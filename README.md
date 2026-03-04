@@ -1,6 +1,6 @@
-\# 🧠 Sztuczna Inteligencja  
+# 🧠 Sztuczna Inteligencja  
 
-\## Problem plecakowy w sklepie internetowym z ubraniami
+## Problem plecakowy w sklepie internetowym z ubraniami
 
 
 
@@ -8,7 +8,7 @@
 
 
 
-\## 👥 Autorzy
+## 👥 Autorzy
 
 
 
