@@ -87,7 +87,12 @@ class App:
 
     def search(self):
 
-        budget = int(self.budget_entry.get())
+        try:
+            budget = int(self.budget_entry.get())
+        except ValueError:
+            self.result.delete(1.0, tk.END)
+            self.result.insert(tk.END, "Podaj poprawny budżet (liczba całkowita)\n")
+            return
 
         selected_types = [
             t for t,v in self.type_vars.items() if v.get()
@@ -116,20 +121,17 @@ class App:
 
             filtered.append(p)
 
-        best = knapsack(filtered, budget)
+        results = knapsack(filtered, budget, selected_types)
 
         self.result.delete(1.0, tk.END)
 
-        total_price = 0
-        total_value = 0
+        if not results:
+            self.result.insert(tk.END, "Brak możliwych zestawów dla podanych kryteriów.\n")
+            return
 
-        for item in best:
-
-            self.result.insert(
-                tk.END,
-                f"{item['name']} | {item['brand']} | {item['color']} | {item['price']} zl\n"
-            )
-
-            total_price += item["price"]
-
-        self.result.insert(tk.END, f"\nSUMA: {total_price} zl\n")
+        for score, sol, total_price in results:
+            line_parts = []
+            for item in sol:
+                line_parts.append(f"{item['name']} | {item['color']} | {item['brand']}")
+            line = " | ".join(line_parts)
+            self.result.insert(tk.END, f"{score:.2f}% | {line} | SUMA: {total_price} zl\n")
