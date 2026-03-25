@@ -1,0 +1,361 @@
+/* ============================================================
+   HARMONIA STYLIST — OATMEAL & DEEP NAVY (Coffee & Navy Style)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Lato:wght@300;400;700&family=DM+Mono:wght@400;500&display=swap');
+
+/* ─── CUSTOM PROPERTIES ──────────────────────────────────────── */
+:root {
+  /* Tła - Zostawiamy ciepły, jasny klimat kawy */
+  --bg-main:    #F4F1EB; /* Jasny, kremowy beż (Oatmeal) */
+  --bg-panel:   #FFFFFF; /* Czysta biel dla kart */
+  --bg-hover:   #EAE5DC; /* Ciemniejszy beż na hover */
+  
+  /* AKCENTY - GŁĘBOKI GRANAT */
+  --navy:       #152238; /* Prawdziwy, klasyczny granat */
+  --navy-light: #2A3F5F; /* Jaśniejszy granat do efektów hover */
+  --navy-pale:  rgba(21, 34, 56, 0.08); /* Przezroczysty granat na tła */
+  
+  /* Teksty */
+  --text-main:  #0B111C; /* Prawie czarny granat - maksymalna czytelność */
+  --text-muted: #6B7280; /* Szary */
+  
+  /* Obramowania */
+  --border:     #E5E0D8;
+  --shadow-soft: 0 12px 36px rgba(21, 34, 56, 0.08); /* Granatowy, rozmyty cień */
+  
+  /* Typografia */
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Lato', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+/* ─── BASE & RESET ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.stApp {
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+  min-height: 100vh;
+}
+
+header, footer, .stDeployButton, #MainMenu {
+  visibility: hidden !important;
+  display: none !important;
+}
+
+.block-container {
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+/* ─── HERO SECTION ────────────────────────────────────────────── */
+.hero {
+  background-color: var(--bg-main);
+  padding: 56px 72px 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 500;
+  color: var(--navy);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--navy-light);
+}
+
+/* ─── ALGO STRIP ──────────────────────────────────────────────── */
+.algo-strip {
+  background-color: var(--bg-panel);
+  padding: 14px 72px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 36px;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.algo-strip b {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.algo-strip span:nth-child(2)::before {
+  content: '●';
+  color: var(--navy);
+  margin-right: 8px;
+}
+
+/* ─── MAIN WRAPPER ────────────────────────────────────────────── */
+.main-wrapper {
+  padding: 48px 72px;
+}
+
+.stApp h2, .stApp h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--navy) !important;
+  margin-bottom: 24px !important;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--navy-pale);
+}
+
+/* ─── FORM ELEMENTS ────────────────────────── */
+.stApp label, .stApp .stLabel {
+  color: var(--text-muted) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px !important;
+}
+
+/* Inputy */
+.stTextInput input, 
+.stNumberInput input, 
+.stMultiSelect > div > div {
+  background-color: var(--bg-panel) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-main) !important;
+  font-family: var(--font-body) !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Focus na inputach - Granatowa poświata */
+.stTextInput input:focus, 
+.stNumberInput input:focus, 
+.stMultiSelect > div > div:focus-within {
+  border-color: var(--navy) !important;
+  box-shadow: 0 0 0 3px var(--navy-pale) !important;
+}
+
+/* Tagi Multiselect (GRANATOWE TŁO, BIAŁY TEKST) */
+.stMultiSelect span[data-baseweb="tag"] {
+  background-color: var(--navy) !important;
+  border: none !important;
+  color: #FFFFFF !important;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 0.8rem !important;
+  border-radius: 4px !important;
+  padding: 4px 10px !important;
+}
+
+.stMultiSelect span[data-baseweb="tag"] span,
+.stMultiSelect span[data-baseweb="tag"] svg {
+  color: #FFFFFF !important; 
+  fill: #FFFFFF !important;
+  opacity: 0.8;
+}
+
+/* Listy rozwijane */
+[data-baseweb="popover"], 
+[data-baseweb="menu"], 
+ul[role="listbox"] {
+  background-color: var(--bg-panel) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+[data-baseweb="menu"] li, 
+ul[role="listbox"] li {
+  color: var(--text-main) !important;
+  font-family: var(--font-body) !important;
+}
+
+[data-baseweb="menu"] li:hover, 
+ul[role="listbox"] li:hover, 
+ul[role="listbox"] li[aria-selected="true"] {
+  background-color: var(--navy-pale) !important;
+  color: var(--navy) !important;
+  font-weight: 700 !important;
+}
+
+/* ─── BUTTON (GŁÓWNY PUNKT - SOLIDNY GRANAT) ──────────────────────────────────── */
+.stButton > button {
+  background-color: var(--navy) !important; 
+  border: none !important;
+  color: #FFFFFF !important; 
+  font-family: var(--font-body) !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.08em !important;
+  padding: 14px 24px !important;
+  border-radius: 6px !important;
+  width: 100% !important;
+  margin-top: 16px !important;
+  transition: all 0.2s ease !important;
+  text-transform: uppercase;
+}
+
+.stButton > button:hover {
+  background-color: var(--navy-light) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(21, 34, 56, 0.25) !important;
+}
+
+.stButton > button:active {
+  transform: translateY(0);
+}
+
+/* ─── RESULT CARDS ─────────── */
+.result-card {
+  background-color: var(--bg-panel) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  margin-bottom: 28px !important;
+  box-shadow: var(--shadow-soft) !important;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(21, 34, 56, 0.12) !important;
+}
+
+.card-header {
+  padding: 18px 24px !important;
+  border-bottom: 1px solid var(--border) !important;
+  background-color: var(--bg-panel) !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header span:first-child {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: var(--navy) !important;
+  text-transform: uppercase;
+}
+
+.card-header span:last-child {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy-light) !important;
+}
+
+.product-row {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px !important;
+  border-bottom: 1px solid var(--border) !important;
+  color: var(--text-main) !important;
+  background-color: var(--bg-panel) !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.product-row:last-child {
+  border-bottom: none !important;
+}
+
+.product-row:hover {
+  background-color: var(--bg-hover) !important;
+}
+
+/* Typ produktu (Białe tło, granatowy obrys) */
+.type-badge {
+  font-family: var(--font-mono) !important;
+  font-size: 0.7rem !important;
+  text-transform: uppercase;
+  background-color: var(--navy-pale) !important;
+  color: var(--navy) !important;
+  padding: 3px 8px !important;
+  border: 1px solid rgba(21, 34, 56, 0.2) !important;
+  border-radius: 4px !important;
+  margin-right: 12px !important;
+  font-weight: 600 !important;
+}
+
+/* Kropka z kolorem */
+.color-dot {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  margin-right: 12px;
+  vertical-align: middle;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+
+.product-row b {
+  font-family: var(--font-body) !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  color: var(--navy) !important;
+}
+
+.product-row > div:last-child {
+  color: var(--navy) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+}
+
+/* ─── ALERTS & SPINNER ────────────────────────────────────────── */
+.stAlert {
+  background-color: var(--bg-panel) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-main) !important;
+  border-left: 4px solid var(--navy) !important;
+  border-radius: 6px !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.stSpinner > div {
+  border-color: var(--navy) transparent transparent transparent !important;
+}
+.stSpinner p {
+  color: var(--navy) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 700 !important;
+}
+
+/* ─── SCROLLBAR ───────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: var(--navy-pale); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--navy-light); }
+
+/* ─── CUSTOM FOOTER ───────────────────────────────────────────── */
+.custom-footer {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding: 40px 0 24px;
+  border-top: 1px solid var(--border);
+  margin-top: 64px;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .hero            { padding: 40px 24px 32px; }
+  .algo-strip      { padding: 12px 24px; flex-wrap: wrap; gap: 16px; }
+  .main-wrapper    { padding: 24px 20px; }
+  .card-header, .product-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .product-row > div:last-child { align-self: flex-start; margin-left: 32px; margin-top: 4px;}
+}
