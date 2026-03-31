@@ -5,7 +5,7 @@ import pandas as pd
 import time
 
 # --- PAGE CONFIG ---
-st.set_page_config(page_title="HARMONIA | AI Stylist", layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="WARDROBE |  Stylist", layout="wide", initial_sidebar_state="collapsed")
 
 # --- LOAD CSS FROM FILE ---
 with open("style.css", "r", encoding="utf-8") as css_file:
@@ -102,7 +102,7 @@ class HarmonyStylist:
 # --- UI LAYOUT ---
 st.markdown("""
 <div class="hero">
-    <div class="hero-title">Harmonia <em>Stylist</em></div>
+    <div class="hero-title">Wardrobe <em>Stylist</em></div>
 </div>
 <div class="algo-strip">
     <span>ENGINE: <b>HARMONY SEARCH</b></span>
@@ -174,6 +174,6 @@ st.markdown('</div>', unsafe_allow_html=True)
 # --- FOOTER ---
 st.markdown("""
 <div class="custom-footer">
-    © ANS — Akademia Nauk Stosowanych · Harmonia Stylist v3.0 · Powered by Harmony Search
+    © ANS — Akademia Nauk Stosowanych · Wardrobe Stylist v3.0 · Powered by Harmony Search
 </div>
 """, unsafe_allow_html=True)
