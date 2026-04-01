@@ -4,15 +4,7 @@ import pandas as pd
 import base64
 
 # --- PAGE CONFIG ---
-<<<<<<< HEAD
-<<<<<<< HEAD
 st.set_page_config(page_title="HARMONIA | O2 Style", layout="wide", initial_sidebar_state="collapsed")
-=======
-st.set_page_config(page_title="WARDROBE |  Stylist", layout="wide", initial_sidebar_state="collapsed")
->>>>>>> 44a21f7aa091bbca69f465075da9560a8de3fd26
-=======
-st.set_page_config(page_title="WARDROBE |  Stylist", layout="wide", initial_sidebar_state="collapsed")
->>>>>>> 44a21f7aa091bbca69f465075da9560a8de3fd26
 
 # ============================================================
 # FUNKCJE POMOCNICZE DO TŁA
@@ -159,16 +151,8 @@ class HarmonyStylist:
 # ============================================================
 st.markdown("""
 <div class="hero">
-<<<<<<< HEAD
-<<<<<<< HEAD
     <div class="hero-title">HARMONIA</div>
     <div class="hero-sub">AI Stylist</div>
-=======
-    <div class="hero-title">Wardrobe <em>Stylist</em></div>
->>>>>>> 44a21f7aa091bbca69f465075da9560a8de3fd26
-=======
-    <div class="hero-title">Wardrobe <em>Stylist</em></div>
->>>>>>> 44a21f7aa091bbca69f465075da9560a8de3fd26
 </div>
 <div class="algo-strip">
     <span>Engine: <b>Harmony Search</b></span>
@@ -226,7 +210,6 @@ with col_res:
                 }
 
                 for i, res in enumerate(results):
-<<<<<<< HEAD
                     set_num = f"0{i+1}"
                     
                     # UWAGA: Kod celowo "przyklejony" do lewej krawędzi (bez wcięć), 
@@ -237,39 +220,6 @@ with col_res:
 <div class="card-stats">
 Fitness: {int(res['score'])}<br>
 Total: {res['cost']} PLN
-=======
-                    st.markdown(f"""
-                    <div class="result-card">
-                        <div class="card-header">
-                            <span>ALTERNATIVE SET {i+1}</span>
-                            <span style="color:#4ECDC4;">FITNESS: {int(res['score'])} | {res['cost']} PLN</span>
-                        </div>
-                    """, unsafe_allow_html=True)
-                    for item in res['items']:
-                        c_dots = {"black":"#000","white":"#fff","navy":"#000080","gray":"#808080","red":"#f00","green":"#008000","beige":"#f5f5dc"}
-                        dot_color = c_dots.get(item['color'], "#888")
-                        st.markdown(f"""
-                        <div class="product-row">
-                            <div>
-                                <span class="type-badge">{item['type']}</span>
-                                <span class="color-dot" style="background:{dot_color}"></span>
-                                <b>{item['brand'].upper()}</b> — {item['name']}
-                            </div>
-                            <div>{item['price']} PLN</div>
-                        </div>
-                        """, unsafe_allow_html=True)
-                    st.markdown("</div>", unsafe_allow_html=True)
-
-st.markdown('</div>', unsafe_allow_html=True)
-
-# --- FOOTER ---
-st.markdown("""
-<div class="custom-footer">
-    © ANS — Akademia Nauk Stosowanych · Wardrobe Stylist v3.0 · Powered by Harmony Search
-<<<<<<< HEAD
->>>>>>> 44a21f7aa091bbca69f465075da9560a8de3fd26
-=======
->>>>>>> 44a21f7aa091bbca69f465075da9560a8de3fd26
 </div>
 </div>"""
                     
