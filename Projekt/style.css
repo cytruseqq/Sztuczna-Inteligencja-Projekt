@@ -1,361 +1,352 @@
 /* ============================================================
-   HARMONIA STYLIST — OATMEAL & DEEP NAVY (Coffee & Navy Style)
+   HARMONIA STYLIST — DARK DESERT GLASS (HIGH CONTRAST)
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Lato:wght@300;400;700&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Space+Grotesk:wght@400;700&display=swap');
 
 /* ─── CUSTOM PROPERTIES ──────────────────────────────────────── */
 :root {
-  /* Tła - Zostawiamy ciepły, jasny klimat kawy */
-  --bg-main:    #F4F1EB; /* Jasny, kremowy beż (Oatmeal) */
-  --bg-panel:   #FFFFFF; /* Czysta biel dla kart */
-  --bg-hover:   #EAE5DC; /* Ciemniejszy beż na hover */
+  --glass-bg:       rgba(15, 12, 10, 0.80);
+  --glass-border:   rgba(255, 255, 255, 0.15);
   
-  /* AKCENTY - GŁĘBOKI GRANAT */
-  --navy:       #152238; /* Prawdziwy, klasyczny granat */
-  --navy-light: #2A3F5F; /* Jaśniejszy granat do efektów hover */
-  --navy-pale:  rgba(21, 34, 56, 0.08); /* Przezroczysty granat na tła */
+  --text-primary:   #FFFFFF; 
+  --text-secondary: #E0E0E0;
+  --text-muted:     #AAAAAA;
   
-  /* Teksty */
-  --text-main:  #0B111C; /* Prawie czarny granat - maksymalna czytelność */
-  --text-muted: #6B7280; /* Szary */
-  
-  /* Obramowania */
-  --border:     #E5E0D8;
-  --shadow-soft: 0 12px 36px rgba(21, 34, 56, 0.08); /* Granatowy, rozmyty cień */
-  
-  /* Typografia */
-  --font-display: 'Playfair Display', serif;
-  --font-body:    'Lato', sans-serif;
-  --font-mono:    'DM Mono', monospace;
+  --accent:         #FF8C42; 
+  --accent-light:   #FFFFFF;
+  --accent-dark:    #1A100B;
+
+  --shadow-glass:   0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-card:    0 20px 50px rgba(0, 0, 0, 0.8);
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  --radius-sm:  12px;
+  --radius-md:  24px;
+  --radius-lg:  32px;
+  --radius-xl:  40px;
 }
 
 /* ─── BASE & RESET ────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 
 html, body {
-  background-color: var(--bg-main) !important;
-  color: var(--text-main) !important;
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
   font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
+  font-weight: 300;
 }
 
 .stApp {
-  background-color: var(--bg-main) !important;
-  color: var(--text-main) !important;
-  min-height: 100vh;
+  background: transparent !important;
+  color: var(--text-primary) !important;
 }
 
-header, footer, .stDeployButton, #MainMenu {
-  visibility: hidden !important;
-  display: none !important;
+/* Ukrycie standardowych elementów Streamlit */
+[data-testid="stHeader"], [data-testid="stFooter"] {
+    display: none !important;
 }
 
-.block-container {
-  padding: 0 !important;
-  max-width: 100% !important;
-}
-
-/* ─── HERO SECTION ────────────────────────────────────────────── */
+/* ─── HERO & ALGO STRIP ───────────────────────────────────────── */
 .hero {
-  background-color: var(--bg-main);
-  padding: 56px 72px 40px;
-  border-bottom: 1px solid var(--border);
+  padding: 40px 60px;
+  margin: 20px 40px;
+  border-radius: 50px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-glass);
 }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 5vw, 4.5rem);
-  font-weight: 500;
-  color: var(--navy);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
   margin: 0;
-  letter-spacing: -0.01em;
-}
-
-.hero-title em {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--navy-light);
-}
-
-/* ─── ALGO STRIP ──────────────────────────────────────────────── */
-.algo-strip {
-  background-color: var(--bg-panel);
-  padding: 14px 72px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  display: flex;
-  gap: 36px;
-  border-bottom: 1px solid var(--border);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-.algo-strip b {
-  color: var(--navy);
-  font-weight: 700;
+.hero-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.algo-strip span:nth-child(2)::before {
-  content: '●';
-  color: var(--navy);
-  margin-right: 8px;
+.algo-strip {
+  margin: 0 40px 40px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  padding: 12px 40px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  display: flex;
+  gap: 30px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
+.algo-strip b { color: var(--accent); }
 
 /* ─── MAIN WRAPPER ────────────────────────────────────────────── */
 .main-wrapper {
-  padding: 48px 72px;
+  padding: 0 40px 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .stApp h2, .stApp h3 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--navy) !important;
-  margin-bottom: 24px !important;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--navy-pale);
-}
-
-/* ─── FORM ELEMENTS ────────────────────────── */
-.stApp label, .stApp .stLabel {
-  color: var(--text-muted) !important;
-  font-family: var(--font-body) !important;
-  font-size: 0.8rem !important;
+  font-family: var(--font-display) !important;
+  font-size: 1.2rem !important;
+  color: var(--text-primary) !important;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 8px !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  padding-bottom: 10px;
+  margin-bottom: 20px !important;
 }
 
-/* Inputy */
-.stTextInput input, 
-.stNumberInput input, 
-.stMultiSelect > div > div {
-  background-color: var(--bg-panel) !important;
-  border: 1px solid var(--border) !important;
-  color: var(--text-main) !important;
-  font-family: var(--font-body) !important;
-  border-radius: 6px !important;
-  transition: all 0.2s ease !important;
+/* =====================================================================
+   FORM ELEMENTS (JEDNOLITA TAFLA SZKŁA)
+   ===================================================================== */
+
+.stApp label, .stApp .stLabel {
+  color: var(--text-secondary) !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500 !important;
 }
 
-/* Focus na inputach - Granatowa poświata */
-.stTextInput input:focus, 
-.stNumberInput input:focus, 
-.stMultiSelect > div > div:focus-within {
-  border-color: var(--navy) !important;
-  box-shadow: 0 0 0 3px var(--navy-pale) !important;
+/* 1. Główne kontenery - jednolita tafla szkła (Wspólny styl) */
+div[data-baseweb="input"], 
+div[data-baseweb="select"] {
+  background-color: rgba(20, 15, 12, 0.35) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: var(--radius-md) !important;
+  overflow: hidden !important; 
 }
 
-/* Tagi Multiselect (GRANATOWE TŁO, BIAŁY TEKST) */
-.stMultiSelect span[data-baseweb="tag"] {
-  background-color: var(--navy) !important;
+/* --- POPRAWKA: Precyzyjne czyszczenie pola wpisywania w Budżecie --- */
+/* Usuwa szary klocek wewnątrz st.number_input */
+.stNumberInput input[data-baseweb="input"] {
+    background-color: transparent !important;
+    background: transparent !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    box-shadow: none !important; /* Usuwa domyślne cienie Streamlit */
+    padding-left: 15px !important;
+}
+
+/* 2. Wyczyszczenie domyślnych teł zagnieżdżonych (Reszta) */
+div[data-baseweb="base-input"],
+div[data-baseweb="select"] > div {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* 3. Naprawa plusa i minusa w budżecie */
+.stNumberInput button {
+  background: transparent !important;
+  background-color: transparent !important;
   border: none !important;
   color: #FFFFFF !important;
-  font-family: var(--font-body) !important;
-  font-weight: 600 !important;
-  font-size: 0.8rem !important;
-  border-radius: 4px !important;
-  padding: 4px 10px !important;
+}
+.stNumberInput button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
 }
 
+/* 4. Efekt podświetlenia inputu */
+div[data-baseweb="input"]:focus-within,
+div[data-baseweb="select"]:focus-within {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 15px rgba(255, 140, 66, 0.3) !important;
+  background-color: rgba(20, 15, 12, 0.5) !important; 
+}
+
+/* 5. Tagi (BIAŁY TEKST NA POMARAŃCZOWYM TLE) */
+.stMultiSelect span[data-baseweb="tag"] {
+  background: var(--accent) !important;
+  color: #FFFFFF !important; 
+  border-radius: 20px !important;
+  font-weight: 700 !important;
+  border: none !important;
+}
 .stMultiSelect span[data-baseweb="tag"] span,
 .stMultiSelect span[data-baseweb="tag"] svg {
-  color: #FFFFFF !important; 
+  color: #FFFFFF !important;
   fill: #FFFFFF !important;
-  opacity: 0.8;
 }
 
-/* Listy rozwijane */
-[data-baseweb="popover"], 
-[data-baseweb="menu"], 
+/* --- POPRAWKA: Biały napis "Choose options" --- */
+/* Targetuje specyficzny placeholder wewnątrz BaseWeb Select */
+.stMultiSelect div[data-baseweb="select"] div[role="button"] {
+    color: #FFFFFF !important;
+}
+
+/* 6. Strzałki i krzyżyki (BIAŁE) */
+.stMultiSelect svg {
+  fill: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+/* Dropdown menu (rozwijana lista) */
+[data-baseweb="popover"],
+[data-baseweb="menu"],
 ul[role="listbox"] {
-  background-color: var(--bg-panel) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 6px !important;
-  box-shadow: var(--shadow-soft) !important;
-}
-
-[data-baseweb="menu"] li, 
-ul[role="listbox"] li {
-  color: var(--text-main) !important;
-  font-family: var(--font-body) !important;
-}
-
-[data-baseweb="menu"] li:hover, 
-ul[role="listbox"] li:hover, 
-ul[role="listbox"] li[aria-selected="true"] {
-  background-color: var(--navy-pale) !important;
-  color: var(--navy) !important;
-  font-weight: 700 !important;
-}
-
-/* ─── BUTTON (GŁÓWNY PUNKT - SOLIDNY GRANAT) ──────────────────────────────────── */
-.stButton > button {
-  background-color: var(--navy) !important; 
+  background-color: transparent !important; 
+  background: transparent !important;
   border: none !important;
+  box-shadow: var(--shadow-glass) !important;
+}
+
+[data-baseweb="menu"] li,
+ul[role="listbox"] li {
   color: #FFFFFF !important; 
-  font-family: var(--font-body) !important;
-  font-weight: 700 !important;
-  font-size: 0.9rem !important;
-  letter-spacing: 0.08em !important;
-  padding: 14px 24px !important;
-  border-radius: 6px !important;
-  width: 100% !important;
-  margin-top: 16px !important;
+  background-color: rgba(45, 40, 38, 0.95) !important; 
+  background: rgba(45, 40, 38, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  margin: 4px !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 8px 12px !important;
   transition: all 0.2s ease !important;
+}
+
+[data-baseweb="menu"] li:hover,
+ul[role="listbox"] li:hover {
+  background-color: rgba(90, 85, 80, 1) !important; 
+  background: rgba(90, 85, 80, 1) !important;
+  color: #FFFFFF !important;
+}
+
+[data-baseweb="menu"] li[aria-selected="true"],
+ul[role="listbox"] li[aria-selected="true"] {
+  background-color: var(--accent) !important; 
+  background: var(--accent) !important;
+  color: var(--accent-dark) !important; 
+}
+
+
+/* ─── BUTTON ──────────────────────────────────────────────────── */
+.stButton > button {
+  background: var(--accent) !important; 
+  color: var(--accent-dark) !important; 
+  border: none !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.1em !important;
   text-transform: uppercase;
+  padding: 16px 30px !important;
+  border-radius: 50px !important; 
+  width: 100% !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3) !important;
+  margin-top: 15px !important;
 }
 
 .stButton > button:hover {
-  background-color: var(--navy-light) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(21, 34, 56, 0.25) !important;
+  transform: scale(1.02) !important;
+  background: #ff9e5e !important;
+  box-shadow: 0 6px 20px rgba(255, 140, 66, 0.5) !important;
 }
 
-.stButton > button:active {
-  transform: translateY(0);
-}
-
-/* ─── RESULT CARDS ─────────── */
+/* ─── RESULT CARDS ────────────────────────────────────────────── */
 .result-card {
-  background-color: var(--bg-panel) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 8px !important;
-  margin-bottom: 28px !important;
-  box-shadow: var(--shadow-soft) !important;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-.result-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(21, 34, 56, 0.12) !important;
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-xl) !important;
+  margin-bottom: 30px !important;
+  padding: 20px 30px;
+  box-shadow: var(--shadow-card) !important;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-header {
-  padding: 18px 24px !important;
-  border-bottom: 1px solid var(--border) !important;
-  background-color: var(--bg-panel) !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15); 
+  padding-bottom: 15px;
+  margin-bottom: 15px;
 }
 
-.card-header span:first-child {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-  color: var(--navy) !important;
+.card-number {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--text-primary);
+  opacity: 0.95;
+}
+
+.card-stats {
+  text-align: right;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
   text-transform: uppercase;
-}
-
-.card-header span:last-child {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--navy-light) !important;
+  letter-spacing: 0.1em;
 }
 
 .product-row {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px !important;
-  border-bottom: 1px solid var(--border) !important;
-  color: var(--text-main) !important;
-  background-color: var(--bg-panel) !important;
-  transition: background-color 0.2s ease !important;
+  padding: 14px 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: var(--text-primary) !important; 
 }
+.product-row:last-child { border-bottom: none !important; }
 
-.product-row:last-child {
-  border-bottom: none !important;
-}
-
-.product-row:hover {
-  background-color: var(--bg-hover) !important;
-}
-
-/* Typ produktu (Białe tło, granatowy obrys) */
 .type-badge {
-  font-family: var(--font-mono) !important;
-  font-size: 0.7rem !important;
+  font-size: 0.65rem !important;
   text-transform: uppercase;
-  background-color: var(--navy-pale) !important;
-  color: var(--navy) !important;
-  padding: 3px 8px !important;
-  border: 1px solid rgba(21, 34, 56, 0.2) !important;
-  border-radius: 4px !important;
-  margin-right: 12px !important;
-  font-weight: 600 !important;
+  letter-spacing: 0.1em;
+  background: rgba(255,255,255,0.15) !important;
+  color: var(--text-primary) !important;
+  padding: 5px 14px !important;
+  border-radius: 20px !important;
+  margin-right: 15px !important;
+  font-weight: 500 !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
 }
 
-/* Kropka z kolorem */
+.product-info { display: flex; align-items: center; }
+.product-info b { font-weight: 700; margin-right: 8px; color: var(--accent) !important; }
+.product-price { font-family: var(--font-display); font-weight: 700; }
+
+.stAlert {
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--accent) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-md) !important;
+}
+
 .color-dot {
   display: inline-block;
-  width: 12px; height: 12px;
+  width: 12px; 
+  height: 12px;
   border-radius: 50%;
   margin-right: 12px;
   vertical-align: middle;
-  border: 1px solid rgba(0,0,0,0.15);
-}
-
-.product-row b {
-  font-family: var(--font-body) !important;
-  font-weight: 700 !important;
-  font-size: 1rem !important;
-  color: var(--navy) !important;
-}
-
-.product-row > div:last-child {
-  color: var(--navy) !important;
-  font-family: var(--font-mono) !important;
-  font-size: 0.95rem !important;
-  font-weight: 600 !important;
-}
-
-/* ─── ALERTS & SPINNER ────────────────────────────────────────── */
-.stAlert {
-  background-color: var(--bg-panel) !important;
-  border: 1px solid var(--border) !important;
-  color: var(--text-main) !important;
-  border-left: 4px solid var(--navy) !important;
-  border-radius: 6px !important;
-  box-shadow: var(--shadow-soft) !important;
-}
-
-.stSpinner > div {
-  border-color: var(--navy) transparent transparent transparent !important;
-}
-.stSpinner p {
-  color: var(--navy) !important;
-  font-family: var(--font-body) !important;
-  font-weight: 700 !important;
-}
-
-/* ─── SCROLLBAR ───────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--bg-main); }
-::-webkit-scrollbar-thumb { background: var(--navy-pale); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--navy-light); }
-
-/* ─── CUSTOM FOOTER ───────────────────────────────────────────── */
-.custom-footer {
-  text-align: center;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  padding: 40px 0 24px;
-  border-top: 1px solid var(--border);
-  margin-top: 64px;
-  letter-spacing: 0.05em;
-}
-
-@media (max-width: 768px) {
-  .hero            { padding: 40px 24px 32px; }
-  .algo-strip      { padding: 12px 24px; flex-wrap: wrap; gap: 16px; }
-  .main-wrapper    { padding: 24px 20px; }
-  .card-header, .product-row { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .product-row > div:last-child { align-self: flex-start; margin-left: 32px; margin-top: 4px;}
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
