@@ -5,7 +5,11 @@ import base64
 
 # --- PAGE CONFIG ---
 <<<<<<< HEAD
+<<<<<<< HEAD
 st.set_page_config(page_title="HARMONIA | O2 Style", layout="wide", initial_sidebar_state="collapsed")
+=======
+st.set_page_config(page_title="WARDROBE |  Stylist", layout="wide", initial_sidebar_state="collapsed")
+>>>>>>> 44a21f7aa091bbca69f465075da9560a8de3fd26
 =======
 st.set_page_config(page_title="WARDROBE |  Stylist", layout="wide", initial_sidebar_state="collapsed")
 >>>>>>> 44a21f7aa091bbca69f465075da9560a8de3fd26
@@ -156,8 +160,12 @@ class HarmonyStylist:
 st.markdown("""
 <div class="hero">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div class="hero-title">HARMONIA</div>
     <div class="hero-sub">AI Stylist</div>
+=======
+    <div class="hero-title">Wardrobe <em>Stylist</em></div>
+>>>>>>> 44a21f7aa091bbca69f465075da9560a8de3fd26
 =======
     <div class="hero-title">Wardrobe <em>Stylist</em></div>
 >>>>>>> 44a21f7aa091bbca69f465075da9560a8de3fd26
@@ -258,6 +266,9 @@ st.markdown('</div>', unsafe_allow_html=True)
 st.markdown("""
 <div class="custom-footer">
     © ANS — Akademia Nauk Stosowanych · Wardrobe Stylist v3.0 · Powered by Harmony Search
+<<<<<<< HEAD
+>>>>>>> 44a21f7aa091bbca69f465075da9560a8de3fd26
+=======
 >>>>>>> 44a21f7aa091bbca69f465075da9560a8de3fd26
 </div>
 </div>"""
